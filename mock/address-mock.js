@@ -1,6 +1,5 @@
 const data = [
   {
-    id: 1,
     userId: 1,
     city: 1,
     street: "Pushkin",
@@ -9,10 +8,9 @@ const data = [
     notes: "lifti koxiny",
     updatedAt: "2023-03-22T10:39:52.652Z",
     createdAt: "2023-03-22T10:39:52.652Z",
-    area:"54"
+    area: "54",
   },
   {
-    id: 2,
     userId: 1,
     city: 1,
     street: "Haxtanaki",
@@ -21,10 +19,9 @@ const data = [
     notes: "achi dur",
     updatedAt: "2023-03-22T10:39:52.652Z",
     createdAt: "2023-03-22T10:39:52.652Z",
-    area:"54"
+    area: "54",
   },
   {
-    id: 3,
     userId: 2,
     city: 1,
     street: "Halabyan",
@@ -33,10 +30,9 @@ const data = [
     notes: "dzaxi dur",
     updatedAt: "2023-03-22T10:39:52.652Z",
     createdAt: "2023-03-22T10:39:52.652Z",
-    area:"54"
+    area: "54",
   },
   {
-    id: 4,
     userId: 2,
     city: 1,
     street: "Njdehi",
@@ -45,10 +41,9 @@ const data = [
     notes: "dzaxi dur",
     updatedAt: "2023-03-22T10:39:52.652Z",
     createdAt: "2023-03-22T10:39:52.652Z",
-    area:"54"
+    area: "54",
   },
   {
-    id: 5,
     userId: 3,
     city: 1,
     street: "Andraniki",
@@ -57,10 +52,9 @@ const data = [
     notes: "mutqy drsi koxmic",
     updatedAt: "2023-03-22T10:39:52.652Z",
     createdAt: "2023-03-22T10:39:52.652Z",
-    area:"54"
+    area: "54",
   },
   {
-    id: 6,
     userId: 3,
     city: 1,
     street: "Mayis 28",
@@ -69,10 +63,9 @@ const data = [
     notes: "dzaxi dur",
     updatedAt: "2023-03-22T10:39:52.652Z",
     createdAt: "2023-03-22T10:39:52.652Z",
-    area:"54"
+    area: "54",
   },
   {
-    id: 7,
     userId: 4,
     city: 1,
     street: "Qeri 18",
@@ -81,10 +74,9 @@ const data = [
     notes: "achi dur",
     updatedAt: "2023-03-22T10:39:52.652Z",
     createdAt: "2023-03-22T10:39:52.652Z",
-    area:"54"
+    area: "54",
   },
   {
-    id: 8,
     userId: 4,
     city: 1,
     street: "Qeri 18",
@@ -93,10 +85,9 @@ const data = [
     notes: "achi dur",
     updatedAt: "2023-03-22T10:39:52.652Z",
     createdAt: "2023-03-22T10:39:52.652Z",
-    area:"54"
+    area: "54",
   },
   {
-    id: 9,
     userId: 5,
     city: 1,
     street: "Qeri 18",
@@ -105,10 +96,9 @@ const data = [
     notes: "achi dur",
     updatedAt: "2023-03-22T10:39:52.652Z",
     createdAt: "2023-03-22T10:39:52.652Z",
-    area:"54"
+    area: "54",
   },
   {
-    id: 10,
     userId: 5,
     city: 1,
     street: "Komitas",
@@ -117,10 +107,9 @@ const data = [
     notes: "dzax dur",
     updatedAt: "2023-03-22T10:39:52.652Z",
     createdAt: "2023-03-22T10:39:52.652Z",
-    area:"54"
+    area: "54",
   },
   {
-    id: 11,
     userId: 5,
     city: 1,
     street: "Komitas",
@@ -129,10 +118,9 @@ const data = [
     notes: "achi dur",
     updatedAt: "2023-03-22T10:39:52.652Z",
     createdAt: "2023-03-22T10:39:52.652Z",
-    area:"54"
+    area: "54",
   },
   {
-    id: 12,
     userId: 6,
     city: 1,
     street: "Arami",
@@ -141,10 +129,9 @@ const data = [
     notes: "damafonov",
     updatedAt: "2023-03-22T10:39:52.652Z",
     createdAt: "2023-03-22T10:39:52.652Z",
-    area:"54"
+    area: "54",
   },
   {
-    id: 13,
     userId: 6,
     city: 1,
     street: "Hr. Quchar",
@@ -153,7 +140,7 @@ const data = [
     notes: "shun ka",
     updatedAt: "2023-03-22T10:39:52.652Z",
     createdAt: "2023-03-22T10:39:52.652Z",
-    area:"54"
+    area: "54",
   },
 ];
 

@@ -8,6 +8,9 @@ router.post("/login", userController.login);
 router.post("/logout", authMiddleWare, userController.logout);
 router.post("/edit", authMiddleWare, userController.editAccount);
 router.post("/changeAvatar", authMiddleWare, userController.changeAvatar);
+router.post("/changePassword", authMiddleWare, userController.changePassword);
 
 router.get("/", userController.getAll);
+router.get("/single", authMiddleWare, userController.getSingle);
+
 module.exports = router;

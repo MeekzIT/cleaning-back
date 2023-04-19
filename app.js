@@ -12,11 +12,14 @@ const addresRouter = require("./routes/address");
 const adminRouter = require("./routes/admin");
 const workersRouter = require("./routes/workers");
 const categoryRouter = require("./routes/category");
+const subCategoryRouter = require("./routes/subCategory");
 const orderRouter = require("./routes/order");
 const aboutUsRouter = require("./routes/aboutUs");
 const contactUsRouter = require("./routes/contactUs");
+const imagesRouter = require("./routes/images");
 const headerInfoRouter = require("./routes/headerInfo");
 const infoRouter = require("./routes/info");
+const advantagesRouter = require("./routes/advantages");
 
 var app = express();
 app.use(cors());
@@ -37,10 +40,14 @@ app.use("/api/v1/addres", addresRouter);
 app.use("/api/v1/admin", adminRouter);
 app.use("/api/v1/workers", workersRouter);
 app.use("/api/v1/category", categoryRouter);
+app.use("/api/v1/subCategory", subCategoryRouter);
 app.use("/api/v1/order", orderRouter);
 app.use("/api/v1/about", aboutUsRouter);
 app.use("/api/v1/header", headerInfoRouter);
 app.use("/api/v1/info", infoRouter);
+app.use("/api/v1/contactUs", contactUsRouter);
+app.use("/api/v1/images", imagesRouter);
+app.use("/api/v1/advantages", advantagesRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

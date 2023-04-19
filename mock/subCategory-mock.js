@@ -44,6 +44,51 @@ const data = [
     updatedAt: "2023-03-22T10:39:52.652Z",
     createdAt: "2023-03-22T10:39:52.652Z",
   },
+  {
+    id: 4,
+    categoryId: 2,
+    naemHy: "Qimmaqrum divan Hy",
+    nameRu: "Qimmaqrum divan Ru",
+    nameEn: "Qimmaqrum divan En",
+    mainImage:
+      "https://www.dogtas.com/images/uploaded/blog-images/how-to-clean-a-messy-house/woman-doing-cleaning-the-house.jpg",
+    descHy: "Qimmaqrum masin Hy",
+    descRu: "Qimmaqrum masin Ru",
+    descEn: "Qimmaqrum masin En",
+    price: "15000",
+    updatedAt: "2023-03-22T10:39:52.652Z",
+    createdAt: "2023-03-22T10:39:52.652Z",
+  },
+  {
+    id: 5,
+    categoryId: 2,
+    naemHy: "Qimmaqrum bazkator Hy",
+    nameRu: "Qimmaqrum bazkator Ru",
+    nameEn: "Qimmaqrum bazkator En",
+    mainImage:
+      "https://www.dogtas.com/images/uploaded/blog-images/how-to-clean-a-messy-house/woman-doing-cleaning-the-house.jpg",
+    descHy: "Qimmaqrum bazkator masin Hy",
+    descRu: "Qimmaqrum bazkator masin Ru",
+    descEn: "Qimmaqrum bazkator masin En",
+    price: "15000",
+    updatedAt: "2023-03-22T10:39:52.652Z",
+    createdAt: "2023-03-22T10:39:52.652Z",
+  },
+  {
+    id: 6,
+    categoryId: 2,
+    naemHy: "Qimmaqrum ayl kahuyq Hy",
+    nameRu: "Qimmaqrum ayl kahuyq Ru",
+    nameEn: "Qimmaqrum ayl kahuyq En",
+    mainImage:
+      "https://www.dogtas.com/images/uploaded/blog-images/how-to-clean-a-messy-house/woman-doing-cleaning-the-house.jpg",
+    descHy: "Qimmaqrum ayl kahuyq masin Hy",
+    descRu: "Qimmaqrum ayl kahuyq masin Ru",
+    descEn: "Qimmaqrum ayl kahuyq masin En",
+    price: "15000",
+    updatedAt: "2023-03-22T10:39:52.652Z",
+    createdAt: "2023-03-22T10:39:52.652Z",
+  },
 ];
 
 module.exports = data;

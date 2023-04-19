@@ -1,6 +1,5 @@
 const userMock = [
   {
-    id: 1,
     firstName: "Test",
     lastName: "1",
     email: "test1@mail.com",
@@ -12,7 +11,6 @@ const userMock = [
     image: null,
   },
   {
-    id: 2,
     firstName: "Test",
     lastName: "2",
     email: "test2@mail.com",
@@ -24,7 +22,6 @@ const userMock = [
     image: null,
   },
   {
-    id: 3,
     firstName: "Test",
     lastName: "3",
     email: "test3@mail.com",
@@ -36,7 +33,6 @@ const userMock = [
     image: null,
   },
   {
-    id: 4,
     firstName: "Test",
     lastName: "4",
     email: "test4@mail.com",
@@ -48,7 +44,6 @@ const userMock = [
     image: null,
   },
   {
-    id: 5,
     firstName: "Test",
     lastName: "5",
     email: "test5@mail.com",
@@ -60,7 +55,6 @@ const userMock = [
     image: null,
   },
   {
-    id: 6,
     firstName: "Test",
     lastName: "6",
     email: "test6@mail.com",

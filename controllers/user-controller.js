@@ -8,7 +8,6 @@ const bcrypt = require("bcryptjs");
 const create = async (req, res) => {
   try {
     const { firstName, lastName, email, password, phoneNumber } = req.body;
-
     const oldUser = await Users.findOne({
       where: { email },
     });
@@ -44,7 +43,6 @@ const login = async (req, res) => {
     const user = await Users.findOne({
       where: { email: email.toLowerCase() },
     });
-
     if (user && (await bcrypt.compare(password, user.password))) {
       const token = jwt.sign(
         { user_id: user.id, email },
@@ -52,7 +50,7 @@ const login = async (req, res) => {
       );
       user.token = token;
       user.save();
-      return res.json({ succes: true });
+      return res.json({ succes: true, data: user });
     }
     return res.json({ error: ["Invalid credentials"] });
   } catch (err) {
@@ -62,23 +60,9 @@ const login = async (req, res) => {
 
 const logout = async (req, res) => {
   try {
-    const { id } = req.body;
-    const user = await Users.findOne({ where: { id } });
+    const { user_id } = req.user;
+    const user = await Users.findOne({ where: { id: user_id } });
     user.token = null;
-    await user.save();
-    return res.json({ succes: true });
-  } catch (e) {
-    console.log("something went wrong", e);
-  }
-};
-
-const changeAvatar = async (req, res) => {
-  try {
-    const { id, image } = req.body;
-    const user = await Users.findOne({
-      where: { id },
-    });
-    user.image = image;
     await user.save();
     return res.json({ succes: true });
   } catch (e) {
@@ -88,16 +72,48 @@ const changeAvatar = async (req, res) => {
 
 const editAccount = async (req, res) => {
   try {
-    const { id, firstName, lastName, email, phoneNumber, image } = req.body;
-
+    const { firstName, lastName, email, phoneNumber } = req.body;
+    const { user_id } = req.user;
     const user = await Users.findOne({
-      where: { id },
+      where: { id: user_id },
     });
 
     user.firstName = firstName;
     user.lastName = lastName;
     user.email = email.toLowerCase();
     user.phoneNumber = phoneNumber;
+    await user.save();
+
+    return res.json(user);
+  } catch (e) {
+    console.log("something went wrong", e);
+  }
+};
+
+const changePassword = async (req, res) => {
+  try {
+    const { password } = req.body;
+    const { user_id } = req.user;
+    const user = await Users.findOne({
+      where: { id: user_id },
+    });
+    let encryptedPassword = await bcrypt.hash(password, 10);
+    user.password = encryptedPassword;
+    await user.save();
+
+    return res.json({ succes: true });
+  } catch (e) {
+    console.log("something went wrong", e);
+  }
+};
+
+const changeAvatar = async (req, res) => {
+  try {
+    const { image } = req.body;
+    const { user_id } = req.user;
+    const user = await Users.findOne({
+      where: { id: user_id },
+    });
     user.image = image;
     await user.save();
 
@@ -142,14 +158,16 @@ const getAll = async (req, res) => {
 
 const getSingle = async (req, res) => {
   try {
-    const { id } = req.query;
-    if (id) {
+    const { user_id } = req.user;
+    if (user_id) {
       const user = await Users.findOne({
-        where: { id },
-        // include: [{
-        //     model: UserSports,
-        //     include: [Sport]
-        // }]
+        where: { id: user_id },
+        include: [
+          {
+            model: Addres,
+            include: [City],
+          },
+        ],
       });
       return res.json(user);
     } else return res.json(true);
@@ -176,7 +194,8 @@ module.exports = {
   logout,
   changeAvatar,
   editAccount,
-
+  changeAvatar,
+  changePassword,
   getAll,
   getSingle,
   delateAccount,

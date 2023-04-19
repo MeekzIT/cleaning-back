@@ -38,10 +38,10 @@ const delateItem = async (req, res) => {
 const getAll = async (req, res) => {
   try {
     const offset = Number.parseInt(req.query.offset) || 0;
-    const limit = Number.parseInt(req.query.limit) || 6;
-    const count = await Users.findAll();
+    const limit = Number.parseInt(req.query.limit) || 18;
+    const count = await Images.findAll();
 
-    const allItems = await Users.findAll({
+    const allItems = await Images.findAll({
       offset: offset * limit,
       limit,
     });

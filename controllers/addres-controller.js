@@ -2,18 +2,19 @@ const Addres = require("../models").Addres;
 
 const create = async (req, res) => {
   try {
-    const { userId, city, street, home, floor, notes } = req.body;
+    const { city, street, home, floor, notes } = req.body;
+    const { user_id } = req.user;
 
     await Addres.create({
-      userId,
+      userId: user_id,
       city,
       street,
       home,
       floor,
       notes,
     });
-
-    return res.json({ succes: true });
+    const data = await Addres.findOne({ where: { userId: user_id } });
+    return res.json(data);
   } catch (e) {
     console.log("something went wrong", e);
   }
@@ -22,12 +23,13 @@ const create = async (req, res) => {
 const delateAddres = async (req, res) => {
   try {
     const { id } = req.body;
-
+    const { user_id } = req.user;
     const addres = await Addres.findOne({
       where: { id },
     });
     await addres.destroy();
-    return res.json({ succes: true });
+    const data = await Addres.findOne({ where: { userId: user_id } });
+    return res.json(data);
   } catch (e) {
     console.log("something went wrong", e);
   }

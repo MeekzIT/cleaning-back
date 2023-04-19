@@ -1,3 +1,5 @@
+const { get } = require("../routes");
+
 const Category = require("../models").Category;
 const SubCategory = require("../models").SubCategory;
 
@@ -64,9 +66,27 @@ const getAll = async (req, res) => {
   }
 };
 
+const getSingle = async (req, res) => {
+  try {
+    const { id } = req.query;
+    const cityes = await Category.findOne({
+      where: { id },
+      include: [
+        {
+          model: SubCategory,
+        },
+      ],
+    });
+    return res.json(cityes);
+  } catch (e) {
+    console.log("something went wrong", e);
+  }
+};
+
 module.exports = {
   getAll,
   create,
   editCategory,
   delateCategory,
+  getSingle,
 };

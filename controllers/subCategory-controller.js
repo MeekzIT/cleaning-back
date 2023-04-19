@@ -81,7 +81,20 @@ const delateCategory = async (req, res) => {
   }
 };
 
+const getSingle = async (req, res) => {
+  try {
+    const { id } = req.query;
+    const data = await SubCategory.findOne({
+      where: { id },
+    });
+    return res.json(data);
+  } catch (e) {
+    console.log("something went wrong", e);
+  }
+};
+
 module.exports = {
   create,
   editSubCategory,
+  getSingle,
 };
