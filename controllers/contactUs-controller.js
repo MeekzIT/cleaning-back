@@ -2,13 +2,13 @@ const ContactUs = require("../models").ContactUs;
 const nodemailer = require("nodemailer");
 const create = async (req, res) => {
   try {
-    const { firstName, surname, email, subject, message } = req.body;
+    const { name, surname, email, subject, message } = req.body;
     const newContact = await ContactUs.create({
-      firstName,
+      name,
       surname,
       email,
       subject,
-      message,
+      notes: message,
     });
     return res.json(newContact);
   } catch (e) {
@@ -48,7 +48,7 @@ const sendAnswer = async (req, res) => {
         pass: "yaChasNeLondone",
       },
     });
-    
+
     await transporter.sendMail(
       {
         from: "vaheemkrtchyan@gmail.com",

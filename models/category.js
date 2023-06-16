@@ -15,7 +15,7 @@ module.exports = (sequelize, DataTypes) => {
     {
       naemHy: DataTypes.STRING,
       nameRu: DataTypes.STRING,
-      nameEn: DataTypes.STRING,
+      nameEn: DataTypes.STRING
     },
     {
       sequelize,
@@ -24,9 +24,12 @@ module.exports = (sequelize, DataTypes) => {
   );
 
   let SubCategory = sequelize.define("SubCategory");
-
+  let Order = sequelize.define("Order");
   Category.hasMany(SubCategory, {
     foreignKey: "categoryId",
+  });
+  Category.belongsTo(Order, {
+    foreignKey: "id",
   });
   return Category;
 };

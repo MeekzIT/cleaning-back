@@ -5,15 +5,22 @@ const SubCategory = require("../models").SubCategory;
 
 const create = async (req, res) => {
   try {
-    const { nameHy, nameRu, nameEn } = req.body;
+    const { naemHy, nameRu, nameEn } = req.body;
 
     await Category.create({
-      nameHy,
+      naemHy,
       nameRu,
       nameEn,
     });
 
-    return res.json({ succes: true });
+    const cityes = await Category.findAll({
+      include: [
+        {
+          model: SubCategory,
+        },
+      ],
+    });
+    return res.json(cityes);
   } catch (e) {
     console.log("something went wrong", e);
   }
@@ -28,7 +35,14 @@ const delateCategory = async (req, res) => {
       where: { id },
     });
     await city.destroy();
-    return res.json({ succes: true });
+    const cityes = await Category.findAll({
+      include: [
+        {
+          model: SubCategory,
+        },
+      ],
+    });
+    return res.json(cityes);
   } catch (e) {
     console.log("something went wrong", e);
   }
@@ -45,7 +59,14 @@ const editCategory = async (req, res) => {
     city.nameRu = nameRu;
     city.nameEn = nameEn;
     await city.save();
-    return res.json({ succes: true });
+    const cityes = await Category.findAll({
+      include: [
+        {
+          model: SubCategory,
+        },
+      ],
+    });
+    return res.json(cityes);
   } catch (e) {
     console.log("something went wrong", e);
   }

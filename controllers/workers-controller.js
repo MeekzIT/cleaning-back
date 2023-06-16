@@ -2,13 +2,12 @@ const Workers = require("../models").Workers;
 
 const create = async (req, res) => {
   try {
-    const { firstName, lastName, number, secondNumber } = req.body;
+    const { firstName, lastName, number } = req.body;
 
     await Workers.create({
       firstName,
       lastName,
       number,
-      secondNumber,
       active: true,
     });
     return res.json({ succes: true });
@@ -31,24 +30,9 @@ const deleateWorker = async (req, res) => {
   }
 };
 
-const activityWorker = async (req, res) => {
-  try {
-    const { id, active } = req.body;
-
-    const worker = await Workers.findOne({
-      where: { id },
-    });
-    worker.active = active;
-    await worker.save();
-    return res.json({ succes: true });
-  } catch (e) {
-    console.log("something went wrong", e);
-  }
-};
-
 const editWorker = async (req, res) => {
   try {
-    const { id, firstName, lastName, number, secondNumber } = req.body;
+    const { id, firstName, lastName, number, active } = req.body;
 
     const worker = await Workers.findOne({
       where: { id },
@@ -56,9 +40,10 @@ const editWorker = async (req, res) => {
     worker.firstName = firstName;
     worker.lastName = lastName;
     worker.number = number;
-    worker.secondNumber = secondNumber;
+    worker.active = active;
     await worker.save();
-    return res.json({ succes: true });
+    const count = await Workers.findAll();
+    return res.json({ paginateData: count });
   } catch (e) {
     console.log("something went wrong", e);
   }
@@ -111,7 +96,6 @@ const getSingle = async (req, res) => {
 module.exports = {
   create,
   deleateWorker,
-  activityWorker,
   editWorker,
 
   getAll,

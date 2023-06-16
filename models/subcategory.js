@@ -22,6 +22,7 @@ module.exports = (sequelize, DataTypes) => {
       descRu: DataTypes.STRING(1234),
       descEn: DataTypes.STRING(1234),
       price: DataTypes.STRING,
+      withArea: DataTypes.BOOLEAN,
     },
     {
       sequelize,
@@ -30,7 +31,11 @@ module.exports = (sequelize, DataTypes) => {
   );
 
   let Category = sequelize.define("Category");
+  let Order = sequelize.define("Order");
   SubCategory.belongsTo(Category, {
+    foreignKey: "id",
+  });
+  SubCategory.belongsTo(Order, {
     foreignKey: "id",
   });
 

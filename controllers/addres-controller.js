@@ -2,7 +2,7 @@ const Addres = require("../models").Addres;
 
 const create = async (req, res) => {
   try {
-    const { city, street, home, floor, notes } = req.body;
+    const { city, street, home, floor, notes, area } = req.body;
     const { user_id } = req.user;
 
     await Addres.create({
@@ -12,6 +12,7 @@ const create = async (req, res) => {
       home,
       floor,
       notes,
+      area,
     });
     const data = await Addres.findOne({ where: { userId: user_id } });
     return res.json(data);
@@ -37,7 +38,7 @@ const delateAddres = async (req, res) => {
 
 const editAddres = async (req, res) => {
   try {
-    const { id, city, street, home, floor, notes } = req.body;
+    const { id, city, street, home, floor, notes, area } = req.body;
 
     const addres = await Addres.findOne({
       where: { id },
@@ -47,6 +48,7 @@ const editAddres = async (req, res) => {
     addres.home = home;
     addres.floor = floor;
     addres.notes = notes;
+    addres.area = area;
     await addres.save();
     return res.json({ succes: true });
   } catch (e) {

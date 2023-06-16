@@ -5,6 +5,8 @@ var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 require("dotenv").config();
 const cors = require("cors");
+const TelegramApi = require("node-telegram-bot-api");
+const botToken = "6076741057:AAErmnrOixs2-OS5Oiu-tEsv1-l_e1rjGmo";
 var indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
 const cityRouter = require("./routes/city");
@@ -63,6 +65,61 @@ app.use(function (err, req, res, next) {
   // render the error page
   res.status(err.status || 500);
   res.render("error");
+});
+
+const bot = new TelegramApi(process.env.BOT_TOKEN, { polling: true });
+
+bot.on("message", async (msg) => {
+  bot.setMyCommands([
+    { command: "/start", description: "Welcome" },
+    { command: "/info", description: "Bot Info" },
+    { command: "/game", description: "Play whit me" },
+  ]);
+  const text = msg.text;
+  const chatId = msg.chat.id;
+  console.log(chatId, "bnmk,kmjnhgb");
+  if (text === "/start") {
+    return bot.sendMessage(
+      process.env.CHAT_ID,
+      `Welcome ${msg.chat.first_name}`
+    );
+  }
+});
+
+const io = require("socket.io")(process.env.SOCKET_PORT, {
+  cors: {
+    origin: [
+      process.env.FRONT_URL,
+      process.env.FRONT_URL_FRONT,
+      "http://localhost:3002",
+      "http://localhost:3003",
+      "http://localhost:3004",
+    ],
+    methods: ["GET", "POST"],
+    credentials: true,
+  },
+});
+
+io.on("connection", (socket) => {
+  //connect
+  console.log("user is conected!");
+
+  //activity invite
+  socket.on("sendActivityInvite", (data) => {
+    io.emit("getActivityInvite", data);
+    return bot.sendMessage(
+      process.env.CHAT_ID,
+      `Նոր Պատվեր ! ${data.date.slice(0, 10)}, ժամը ${data.date.slice(
+        11,
+        16
+      )},  ${data.prePay ? "կանխիկ" : "առցանց"} վճարում`
+    );
+  });
+
+  //disconnect
+  socket.on("disconnect", () => {
+    console.log("a user is disconnected!");
+  });
 });
 
 module.exports = app;

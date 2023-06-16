@@ -1,4 +1,6 @@
 const Admin = require("../models").Admin;
+const jwt = require("jsonwebtoken");
+const bcrypt = require("bcryptjs");
 
 const login = async (req, res) => {
   try {
@@ -21,7 +23,7 @@ const login = async (req, res) => {
       );
       user.token = token;
       user.save();
-      return res.json({ succes: true });
+      return res.json(user);
     }
     return res.json({ error: ["Invalid credentials"] });
   } catch (e) {
@@ -31,7 +33,7 @@ const login = async (req, res) => {
 
 const logout = async (req, res) => {
   try {
-    const user = await Admin.findOne({ where: { id } });
+    const user = await Admin.findOne({ where: { id: 1 } });
     user.token = null;
     await user.save();
     return res.json({ succes: true });

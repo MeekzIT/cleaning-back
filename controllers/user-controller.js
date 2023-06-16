@@ -1,6 +1,10 @@
 const Users = require("../models").User;
 const Addres = require("../models").Addres;
 const City = require("../models").City;
+const Order = require("../models").Order;
+const Category = require("../models").Category;
+const SubCategory = require("../models").SubCategory;
+const Workers = require("../models").Workers;
 
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
@@ -188,6 +192,31 @@ const delateAccount = async (req, res) => {
   }
 };
 
+const getUserHistory = async (req,res) => {
+  try {
+    const { id } = req.query;
+    const orders = await Order.findAll({ 
+      where: { userId:id },
+      include: [
+      {
+        model: Category,
+      },
+      {
+        model: SubCategory,
+      },
+      {
+        model: Workers,
+      },
+      {
+        model: Addres,
+      },
+    ], });
+    return res.json(orders);
+  } catch (e) {
+    console.log("something went wrong", e);
+  }
+}
+
 module.exports = {
   create,
   login,
@@ -199,4 +228,5 @@ module.exports = {
   getAll,
   getSingle,
   delateAccount,
+  getUserHistory
 };

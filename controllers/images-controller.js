@@ -2,9 +2,8 @@ const Images = require("../models").Images;
 
 const create = async (req, res) => {
   try {
-    const { subCategoryId, image } = req.body;
+    const { image } = req.body;
     await Images.create({
-      subCategoryId,
       image,
     });
     return res.json({ succes: true });
@@ -15,9 +14,8 @@ const create = async (req, res) => {
 
 const edit = async (req, res) => {
   try {
-    const { id, subCategoryId, image } = req.body;
+    const { id, image } = req.body;
     const item = await Images.findOne({ where: { id } });
-    item.subCategoryId = subCategoryId;
     item.image = image;
     return res.json({ succes: true });
   } catch (e) {

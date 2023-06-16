@@ -1,10 +1,11 @@
 const SubCategory = require("../models").SubCategory;
+const Category = require("../models").Category;
 
 const create = async (req, res) => {
   try {
     const {
       categoryId,
-      nameHy,
+      naemHy,
       nameRu,
       nameEn,
       mainImage,
@@ -12,11 +13,12 @@ const create = async (req, res) => {
       descRu,
       descEn,
       price,
+      withArea
     } = req.body;
 
     await SubCategory.create({
       categoryId,
-      nameHy,
+      naemHy,
       nameRu,
       nameEn,
       mainImage,
@@ -24,6 +26,7 @@ const create = async (req, res) => {
       descRu,
       descEn,
       price,
+      withArea
     });
 
     return res.json({ succes: true });
@@ -51,7 +54,7 @@ const editSubCategory = async (req, res) => {
       where: { id },
     });
     category.categoryId = categoryId;
-    category.nameHy = nameHy;
+    category.naemHy = nameHy;
     category.nameRu = nameRu;
     category.nameEn = nameEn;
     category.mainImage = mainImage;
@@ -60,7 +63,14 @@ const editSubCategory = async (req, res) => {
     category.descEn = descEn;
     category.price = price;
     await category.save();
-    return res.json({ succes: true });
+    const cityes = await Category.findAll({
+      include: [
+        {
+          model: SubCategory,
+        },
+      ],
+    });
+    return res.json(cityes);
   } catch (e) {
     console.log("something went wrong", e);
   }
@@ -93,8 +103,19 @@ const getSingle = async (req, res) => {
   }
 };
 
+const getAll = async (req, res) => {
+  try {
+    const data = await SubCategory.findAll();
+    return res.json(data);
+  } catch (e) {
+    console.log("something went wrong", e);
+  }
+};
+
 module.exports = {
   create,
   editSubCategory,
   getSingle,
+  getAll,
+  delateCategory,
 };

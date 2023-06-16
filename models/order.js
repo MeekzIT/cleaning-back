@@ -19,7 +19,8 @@ module.exports = (sequelize, DataTypes) => {
       email: DataTypes.STRING,
       number: DataTypes.STRING,
       secondNumber: DataTypes.STRING,
-      date: DataTypes.STRING,
+      startDate: DataTypes.STRING,
+      endDate: DataTypes.STRING,
       workerId: DataTypes.INTEGER,
       status: DataTypes.STRING,
       address: DataTypes.STRING,
@@ -40,5 +41,22 @@ module.exports = (sequelize, DataTypes) => {
       modelName: "Order",
     }
   );
+
+  let SubCategory = sequelize.define("SubCategory");
+  let Category = sequelize.define("Category");
+  let Workers = sequelize.define("Workers");
+  let Addres = sequelize.define("Addres")
+  Order.belongsTo(SubCategory, {
+    foreignKey: "subCategoryId",
+  });
+  Order.belongsTo(Category, {
+    foreignKey: "categoryId",
+  });
+  Order.belongsTo(Workers,{
+    foreignKey:"workerId"
+  })
+  Order.belongsTo(Addres,{
+    foreignKey:"addressId"
+  })
   return Order;
 };

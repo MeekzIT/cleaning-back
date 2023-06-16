@@ -29,11 +29,15 @@ module.exports = (sequelize, DataTypes) => {
 
   let Users = sequelize.define("User");
   let City = sequelize.define("City");
+  let Order = sequelize.define("Order")
   Addres.belongsTo(Users, {
     foreignKey: "id",
   });
   Addres.belongsTo(City, {
     foreignKey: "city",
   });
+  Addres.belongsTo(Order,{
+    foreignKey:"id"
+  })
   return Addres;
 };

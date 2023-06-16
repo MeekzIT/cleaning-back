@@ -1,6 +1,5 @@
 const data = [
   {
-    id: 1,
     firstName: "Worker",
     lastName: "1",
     number: "099999999",
@@ -10,7 +9,6 @@ const data = [
     createdAt: "2023-03-22T10:39:52.652Z",
   },
   {
-    id: 2,
     firstName: "Worker",
     lastName: "2",
     number: "099999999",
@@ -20,7 +18,6 @@ const data = [
     createdAt: "2023-03-22T10:39:52.652Z",
   },
   {
-    id: 3,
     firstName: "Worker",
     lastName: "3",
     number: "099999999",
@@ -30,7 +27,6 @@ const data = [
     createdAt: "2023-03-22T10:39:52.652Z",
   },
   {
-    id: 4,
     firstName: "Worker",
     lastName: "4",
     number: "099999999",
@@ -40,7 +36,6 @@ const data = [
     createdAt: "2023-03-22T10:39:52.652Z",
   },
   {
-    id: 5,
     firstName: "Worker",
     lastName: "5",
     number: "099999999",
@@ -50,7 +45,6 @@ const data = [
     createdAt: "2023-03-22T10:39:52.652Z",
   },
   {
-    id: 6,
     firstName: "Worker",
     lastName: "6",
     number: "099999999",

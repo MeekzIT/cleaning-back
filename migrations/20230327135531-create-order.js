@@ -27,7 +27,10 @@ module.exports = {
       secondNumber: {
         type: Sequelize.STRING,
       },
-      date: {
+      startDate: {
+        type: Sequelize.STRING,
+      },
+      endDate: {
         type: Sequelize.STRING,
       },
       workerId: {

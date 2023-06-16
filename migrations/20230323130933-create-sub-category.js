@@ -12,6 +12,7 @@ module.exports = {
       categoryId: {
         type: Sequelize.INTEGER,
       },
+      withArea: Sequelize.BOOLEAN,
       naemHy: {
         type: Sequelize.STRING,
       },
